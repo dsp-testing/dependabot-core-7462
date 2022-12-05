@@ -1,0 +1,9 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Run [postgres]" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+    <module name="portail-formation" />
+    <option name="SPRING_BOOT_MAIN_CLASS" value="fr.schoolbyhiit.portailformation.PortailFormationApplication" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
