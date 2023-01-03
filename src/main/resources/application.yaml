@@ -2,6 +2,9 @@ server:
   port: 8080
 
 spring:
+  servlet: 
+    multipart: 
+      max-file-size: 2MB
   datasource:
     url: jdbc:postgresql://${DATABASE_URL:localhost:5432}/${DATABASE_NAME:postgres}
     driver-class-name: org.postgresql.Driver
@@ -14,6 +17,14 @@ spring:
     show-sql: true
   flyway:
     schemas: 'portail_formation'
+
+minio: 
+  url: "http://my-app-minio:9000"
+  bucket: 
+    name: springboot-test
+  access: 
+    key: minio-client
+    secret: Ch@nge1t
 
 management:
   endpoint:

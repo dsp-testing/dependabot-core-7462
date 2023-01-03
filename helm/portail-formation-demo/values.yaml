@@ -83,7 +83,7 @@ affinity: {}
 
 serverEnvs: 
   - name: DATABASE_URL
-    value: "postgresql-1670926474:5432"
+    value: "my-app-postgresql:5432"
   - name: DATABASE_NAME
     value: my_db
   - name: DATABASE_USER
@@ -91,5 +91,48 @@ serverEnvs:
   - name: DATABASE_PASSWORD
     valueFrom:
       secretKeyRef:
-        name: postgresql-1670926474
+        name: my-app-postgresql
         key: password
+  - name: S3_URL
+    value: "http://my-app-minio:9000"
+  - name: S3_BUCKET_NAME
+    value: "springboot-test"
+  - name: S3_ACCESS_KEY
+    valueFrom:
+      secretKeyRef:
+        name: my-app-minio
+        key: root-user
+  - name: S3_SECRET_KEY
+    valueFrom:
+      secretKeyRef:
+        name: my-app-minio
+        key: root-password
+
+postgresql: 
+  enabled: true
+  primary: 
+    persistence: 
+      enabled: false
+  auth:
+    username: user
+    password: Ch@nge1t
+    database: my_db
+
+minio:
+  enabled: true
+  persistence:
+    enabled: false
+  auth:
+    rootUser: admin
+    rootPassword: Ch@nge1t
+  provisioning:
+    enabled: true
+    users:
+      - username: minio-client
+        password: Ch@nge1t
+        disabled: false
+        policies:
+          - readwrite
+        setPolicies: true
+    buckets:
+      - name: springboot-test
