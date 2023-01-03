@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: my-app
+  repository: nerevahr/portail-formation-demo
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: "latest"
@@ -41,16 +41,16 @@ service:
   port: 80
 
 ingress:
-  enabled: false
-  className: ""
-  annotations: {}
-    # kubernetes.io/ingress.class: nginx
+  enabled: true
+  className: "nginx"
+  annotations: 
+    kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
   hosts:
-    - host: chart-example.local
+    - host: sbh-school-portal
       paths:
-        - path: /
-          pathType: ImplementationSpecific
+        - path: /api
+          pathType: Prefix
   tls: []
   #  - secretName: chart-example-tls
   #    hosts:
