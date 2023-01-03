@@ -1,0 +1,42 @@
+server:
+  port: ${APP_PORT:8080}
+
+spring:
+  data:
+    web:
+      pageable:
+        one-indexed-parameters: true
+  servlet: 
+    multipart:
+      max-file-size: 2MB
+  datasource:
+    url: jdbc:postgresql://${DATABASE_URL:localhost:5432}/${DATABASE_NAME:postgres}
+    driver-class-name: org.postgresql.Driver
+    username: ${DATABASE_USER:portail-formation}
+    password: ${DATABASE_PASSWORD:Ch@nge1t}
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+    show-sql: true
+  flyway:
+    schemas: 'portail_formation'
+
+minio: 
+  url: "http://portail-formation-minio:9000"
+  bucket: 
+    name: springboot-test
+  access: 
+    key: minio-client
+    secret: Ch@nge1t
+
+management:
+  endpoint:
+    health:
+      probes:
+        enabled: "true"
+  health:
+    livenessState:
+      enabled: "true"
+    readinessState:
+      enabled: "true"

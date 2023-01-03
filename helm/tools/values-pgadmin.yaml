@@ -1,0 +1,27 @@
+ingress:
+  enabled: false
+  ingressClassName: "nginx"
+  hosts:
+    - host: sbh-school-portal
+      paths:
+        - path: /pgadmin
+          pathType: Prefix
+
+env:
+  email: admin@admin.com
+  password: admin
+
+serverDefinitions:
+  enabled: true
+  servers:
+    firstServer:
+      Name: "Portail Database server"
+      Group: "Servers"
+      Port: 5432
+      Username: "portail-formation"
+      Host: "portail-formation-postgresql"
+      SSLMode: "prefer"
+      MaintenanceDB: "my_db"
+
+persistentVolume:
+  enabled: false
