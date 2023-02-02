@@ -11,5 +11,5 @@ CREATE TABLE courses (
     file_name   VARCHAR(100) NOT NULL,
 
     module_id   BIGINT NOT NULL,
-    CONSTRAINT fk_courses_modules FOREIGN KEY (module_id) REFERENCES modules (id) ON DELETE CASCADE;
+    CONSTRAINT fk_courses_modules FOREIGN KEY (module_id) REFERENCES modules (id) ON DELETE CASCADE
 );
