@@ -1,10 +1,6 @@
 deploy:
   - helm repo add bitnami https://charts.bitnami.com/bitnami
   - helm dependency build helm/portail-formation-backend 
-  - helm upgrade --install portail-formation helm/portail-formation-backend
-    --set image.repository=ghcr.io/nerevahr/portail-formation-api
-    --set ingress.hosts[0].host=sbh-portal.nerevahr.cloud.okteto.net
-    --set ingress.hosts[0].paths[0].path=/api
-    --set ingress.hosts[0].paths[0].pathType=Prefix
+  - helm upgrade --install portail-formation --values helm/portail-formation-backend/values-okteto.yaml helm/portail-formation-backend
 
 

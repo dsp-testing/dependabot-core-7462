@@ -2,7 +2,9 @@ load('ext://secret', 'secret_from_dict', 'secret_yaml_registry')
 load('ext://helm_resource', 'helm_resource', 'helm_repo')
 load('ext://uibutton', 'cmd_button', 'location', 'text_input')
 
-namespace = "default"
+allow_k8s_contexts('cloud_okteto_com')
+
+namespace = "nerevahr"
 release_name = "portail-formation"
 backend_sources_path = "./backend"
 docker_path = "./docker"
@@ -43,6 +45,7 @@ pgadmin_values = "./helm/tools/values-pgadmin.yaml"
 helm_resource(
     'pgadmin4',
     'runix/pgadmin4',
+    namespace=namespace,
     flags=["--values", pgadmin_values],
     labels=['tools'],
     port_forwards=[port_forward(9910, 80, name='console')]
