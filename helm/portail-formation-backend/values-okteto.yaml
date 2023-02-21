@@ -140,3 +140,17 @@ minio:
         setPolicies: true
     buckets:
       - name: springboot-test
+
+keycloak: 
+  enabled: false
+  ingress:
+    enabled: true
+    annotations: 
+      dev.okteto.com/generate-host: "true"
+    externalDatabase:
+      host: "portail-formation-postgresql"
+      port: 5432
+      user: postgres
+      database: my_db
+      existingSecret: "portail-formation-postgresql"
+      existingSecretPasswordKey: "postgres-password"
