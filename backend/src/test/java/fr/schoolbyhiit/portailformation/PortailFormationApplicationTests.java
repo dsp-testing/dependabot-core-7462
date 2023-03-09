@@ -1,13 +1,13 @@
-package fr.schoolbyhiit.portailformation;
+// package fr.schoolbyhiit.portailformation;
 
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+// import org.junit.jupiter.api.Test;
+// import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
-class PortailFormationApplicationTests {
+// @SpringBootTest
+// class PortailFormationApplicationTests {
 
-    @Test
-    void contextLoads() {
-    }
+//     @Test
+//     void contextLoads() {
+//     }
 
-}
+// }

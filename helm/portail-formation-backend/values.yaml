@@ -120,6 +120,14 @@ postgresql:
   primary:
     persistence:
       enabled: false
+    initdb:
+      user: postgres
+      password: Ch@nge1t
+      scripts:
+        my_init_script.sql: |
+          CREATE USER bn_keycloak WITH PASSWORD 'jw8s0F4';
+          CREATE DATABASE bitnami_keycloak;
+          RANT ALL PRIVILEGES ON DATABASE bitnami_keycloak TO bn_keycloak;
 
 minio:
   enabled: true
@@ -139,3 +147,23 @@ minio:
         setPolicies: true
     buckets:
       - name: springboot-test
+  
+keycloak: 
+  enabled: true
+  ingress:
+    enabled: false
+
+  auth:
+    adminUser: admin
+    adminPassword: admin
+  postgresql:
+    enabled: false
+
+  externalDatabase:
+    host: "portail-formation-postgresql"
+    port: 5432
+    user: bn_keycloak
+    database: bitnami_keycloak
+    password: "jw8s0F4"
+    # existingSecret: "portail-formation-postgresql"
+    # existingSecretPasswordKey: "password"
