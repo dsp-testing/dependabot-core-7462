@@ -35,3 +35,6 @@ build/
 ### Helm ###
 /helm/portail-formation-backend/Chart.lock
 /helm/portail-formation-backend/charts/
+
+### Mockoon ###
+/tmp

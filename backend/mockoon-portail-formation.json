@@ -1,0 +1,240 @@
+{
+  "uuid": "c99022e4-3b1f-47ee-a4c3-f57ecc29fc52",
+  "lastMigration": 27,
+  "name": "Portail formation",
+  "endpointPrefix": "api",
+  "latency": 0,
+  "port": 8080,
+  "hostname": "",
+  "folders": [
+    {
+      "uuid": "541562ec-7207-4a0a-8b36-d7d9caaae17f",
+      "name": "events",
+      "collapsed": false,
+      "children": [
+        {
+          "type": "route",
+          "uuid": "0bad87d9-fa56-42cf-b18b-e26063ff9411"
+        },
+        {
+          "type": "route",
+          "uuid": "b50702d7-e3ca-4ee5-a742-84ceb62ee56e"
+        }
+      ]
+    },
+    {
+      "uuid": "1b03414e-cad5-4a80-9a09-b40fb9c994b3",
+      "name": "modules",
+      "collapsed": false,
+      "children": [
+        {
+          "type": "route",
+          "uuid": "57140f9f-9ebd-4a1a-9f82-5c12f1751f49"
+        },
+        {
+          "type": "route",
+          "uuid": "379d5aae-e45e-41f1-a050-7cb90ad4f24a"
+        }
+      ]
+    },
+    {
+      "uuid": "25e6c3a1-9c24-4fa8-b7d8-011674faaf36",
+      "name": "users",
+      "collapsed": false,
+      "children": [
+        {
+          "type": "route",
+          "uuid": "c8c990b0-97ff-4d1a-9eec-a162cdece9a0"
+        }
+      ]
+    }
+  ],
+  "routes": [
+    {
+      "uuid": "57140f9f-9ebd-4a1a-9f82-5c12f1751f49",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "modules",
+      "responses": [
+        {
+          "uuid": "8d83991c-7045-47d6-bdfe-90257852a467",
+          "body": "{\r\n    \"content\": [\r\n        {\r\n            \"id\": 1,\r\n            \"name\": \"Java basics\",\r\n            \"courses\": [\r\n                {\r\n                    \"id\": 1,\r\n                    \"name\": \"Classes et attributs\",\r\n                    \"totalHourCount\": {{ faker 'datatype.number' 12}},\r\n                    \"progression\": {{ faker 'datatype.number' 100}},\r\n                    \"referee\": \"{{ faker 'name.firstName' + faker 'name.lastName' }}\",\r\n                    \"fileName\": \"java_classes_and _attributes\"\r\n                }\r\n            ]\r\n        }\r\n    ],\r\n    \"pageable\": {\r\n        \"sort\": {\r\n            \"empty\": false,\r\n            \"unsorted\": false,\r\n            \"sorted\": true\r\n        },\r\n        \"offset\": 0,\r\n        \"pageNumber\": 0,\r\n        \"pageSize\": 10,\r\n        \"paged\": true,\r\n        \"unpaged\": false\r\n    },\r\n    \"totalPages\": 1,\r\n    \"totalElements\": 1,\r\n    \"last\": true,\r\n    \"size\": 10,\r\n    \"number\": 0,\r\n    \"sort\": {\r\n        \"empty\": false,\r\n        \"unsorted\": false,\r\n        \"sorted\": true\r\n    },\r\n    \"numberOfElements\": 1,\r\n    \"first\": true,\r\n    \"empty\": false\r\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null,
+      "type": "http"
+    },
+    {
+      "uuid": "379d5aae-e45e-41f1-a050-7cb90ad4f24a",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "modules/:module_id",
+      "responses": [
+        {
+          "uuid": "ff046335-c73c-44ab-afc3-557cf738d90c",
+          "body": "{\n  \"id\": {{ urlParam 'module_id' }},\n  \"name\": \"Java basics\",\n  \"courses\": [\n    {\n      \"id\": 1,\n      \"name\": \"Classes et attributs\",\n      \"totalHourCount\": {{ faker 'datatype.number' 12}},\n      \"progression\": {{ faker 'datatype.number' 100}},\n      \"referee\": \"{{ faker 'name.firstName' }} {{ faker 'name.lastName' }}\",\n      \"fileName\": \"java_classes_and _attributes\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null,
+      "type": "http"
+    },
+    {
+      "uuid": "0bad87d9-fa56-42cf-b18b-e26063ff9411",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "events",
+      "responses": [
+        {
+          "uuid": "51dc94e6-f142-4c8d-bf59-94551e338d45",
+          "body": "[\n  {\n    \"id\": 1,\n    \"title\": \"\",\n    \"start\": \"2023-03-20T08:00:00+00:00\",\n    \"end\": \"2023-03-20T12:00:00+00:00\",\n    \"allDay\": false,\n    \"courseId\": 1\n  },\n  {\n    \"id\": 2,\n    \"title\": \"\",\n    \"start\": \"2023-02-24T13:00:00+00:00\",\n    \"end\": \"2023-02-24T17:00:00+00:00\",\n    \"allDay\": false,\n    \"courseId\": 1\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null,
+      "type": "http"
+    },
+    {
+      "uuid": "b50702d7-e3ca-4ee5-a742-84ceb62ee56e",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "events/:event_id",
+      "responses": [
+        {
+          "uuid": "5aaaaaf0-6055-42b9-9bf3-b3171fc6c0d7",
+          "body": "{\n  \"id\": {{ urlParam 'event_id' }},\n  \"title\": \"\",\n  \"start\": \"2023-02-24T10:30:00+00:00\",\n  \"end\": \"2023-02-24T12:30:00+00:00\",\n  \"allDay\": false,\n  \"courseId\": 1\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null,
+      "type": "http"
+    },
+    {
+      "uuid": "c8c990b0-97ff-4d1a-9eec-a162cdece9a0",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "users",
+      "responses": [
+        {
+          "uuid": "93036bb3-85ad-4c20-b8e4-769a76502c3b",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null,
+      "type": "http"
+    }
+  ],
+  "rootChildren": [
+    {
+      "type": "folder",
+      "uuid": "541562ec-7207-4a0a-8b36-d7d9caaae17f"
+    },
+    {
+      "type": "folder",
+      "uuid": "1b03414e-cad5-4a80-9a09-b40fb9c994b3"
+    },
+    {
+      "type": "folder",
+      "uuid": "25e6c3a1-9c24-4fa8-b7d8-011674faaf36"
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [
+    {
+      "key": "Content-Type",
+      "value": "application/json"
+    }
+  ],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}
