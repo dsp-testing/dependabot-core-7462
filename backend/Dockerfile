@@ -11,7 +11,7 @@ FROM mockoon/cli as mock-backend
 # FROM node:14-alpine as mock-backend
 
 # RUN npm install -g @mockoon/cli@2.3.0
-COPY mockoon-portail-formation.json ./mockoon-portail-formation.json
+COPY backend/mockoon-portail-formation.json ./mockoon-portail-formation.json
 # Do not run as root.
 # RUN adduser --shell /bin/sh --disabled-password --gecos "" mockoon
 # RUN chown -R mockoon ./mockoon-portail-formation.json
