@@ -1,8 +1,13 @@
+image:
+  file: .gitpod.Dockerfile
+  
 # List the start up tasks. Learn more: https://www.gitpod.io/docs/configure/workspaces/tasks
 tasks:
   - name: Script Task
     init: echo 'init script' # runs during prebuild => https://www.gitpod.io/docs/configure/projects/prebuilds
     command: echo 'start script'
+  - name: Switch okteto context to cloud.okteto.com
+    command: okteto context use $OKTETO_URL --token $OKTETO_TOKEN
 
 # List the ports to expose. Learn more: https://www.gitpod.io/docs/configure/workspaces/ports
 ports:
