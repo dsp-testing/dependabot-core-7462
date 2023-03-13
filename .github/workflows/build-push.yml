@@ -58,7 +58,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v4
         with:
-          images: ghcr.io/nerevahr/portail-formation-api
+          images: ghcr.io/nerevahr/portail-formation-api-mock
           tags: |
             type=raw,value=latest,enable={{is_default_branch}}
             type=semver,pattern={{version}}
