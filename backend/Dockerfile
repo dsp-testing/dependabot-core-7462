@@ -11,13 +11,13 @@ FROM mockoon/cli as mock-backend
 # FROM node:14-alpine as mock-backend
 
 # RUN npm install -g @mockoon/cli@2.3.0
-# COPY backend/mockoon-portail-formation.json ./mockoon-portail-formation.json
+COPY backend/mockoon-portail-formation.json ./mockoon-portail-formation.json
 # Do not run as root.
 # RUN adduser --shell /bin/sh --disabled-password --gecos "" mockoon
 # RUN chown -R mockoon ./mockoon-portail-formation.json
 # USER mockoon
 EXPOSE 8080
-ENTRYPOINT ["mockoon-cli", "start", "--hostname", "0.0.0.0", "--daemon-off", "--data", "https://raw.githubusercontent.com/Nerevahr/portail-formation-demo/main/backend/mockoon-portail-formation.json", "--container"]
+ENTRYPOINT ["mockoon-cli", "start", "--hostname", "0.0.0.0", "--daemon-off", "--data", "./mockoon-portail-formation.json", "--container"]
 # Usage: docker run -p <host_port>:<container_port> mockoon-test
 
 FROM openjdk:17-alpine as dev-mode
