@@ -189,6 +189,62 @@
       "enabled": true,
       "responseMode": null,
       "type": "http"
+    },
+    {
+      "uuid": "40627d38-2d01-4937-ae4b-1f3cd9bdfa03",
+      "type": "http",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "actuator/health/liveness",
+      "responses": [
+        {
+          "uuid": "5decf62e-d934-433c-ba3a-0bfb541a8a07",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "fc070e6b-63f3-4026-8d80-a7e5fe6cae75",
+      "type": "http",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "actuator/health/readiness",
+      "responses": [
+        {
+          "uuid": "5049d706-e1e7-489e-ac43-5889408bd2a1",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
     }
   ],
   "rootChildren": [
@@ -203,6 +259,14 @@
     {
       "type": "folder",
       "uuid": "25e6c3a1-9c24-4fa8-b7d8-011674faaf36"
+    },
+    {
+      "type": "route",
+      "uuid": "40627d38-2d01-4937-ae4b-1f3cd9bdfa03"
+    },
+    {
+      "type": "route",
+      "uuid": "fc070e6b-63f3-4026-8d80-a7e5fe6cae75"
     }
   ],
   "proxyMode": false,
