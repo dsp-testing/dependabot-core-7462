@@ -34,6 +34,18 @@
         {
           "type": "route",
           "uuid": "379d5aae-e45e-41f1-a050-7cb90ad4f24a"
+        },
+        {
+          "type": "route",
+          "uuid": "ea14fbec-4000-4e78-bbcc-0f0daa442c0d"
+        },
+        {
+          "type": "route",
+          "uuid": "8d935744-3121-4c09-902a-444dcd43e410"
+        },
+        {
+          "type": "route",
+          "uuid": "0c04f8fd-b6d4-45d6-8db8-7bc71525fe27"
         }
       ]
     },
@@ -93,7 +105,7 @@
               "target": "header",
               "modifier": "Authorization",
               "value": "",
-              "invert": false,
+              "invert": true,
               "operator": "null"
             }
           ],
@@ -344,6 +356,107 @@
       ],
       "enabled": true,
       "responseMode": null
+    },
+    {
+      "uuid": "ea14fbec-4000-4e78-bbcc-0f0daa442c0d",
+      "type": "http",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "modules",
+      "responses": [
+        {
+          "uuid": "4c209d76-f8dc-4530-bb91-848b6bc70463",
+          "body": "{\n  \"id\": 1,\n  \"name\": \"Java les bases\",\n  \"courses\": [\n    {\n      \"id\": 1,\n      \"name\": \"Classes et attributs\",\n      \"totalHourCount\": {{ faker 'datatype.number' 12}},\n      \"progression\": {{ faker 'datatype.number' 100}},\n      \"referee\": \"{{ faker 'name.firstName' }} {{ faker 'name.lastName' }}\",\n      \"fileName\": \"java_classes_and_attributes\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "8d935744-3121-4c09-902a-444dcd43e410",
+      "type": "http",
+      "documentation": "",
+      "method": "put",
+      "endpoint": "modules/:id",
+      "responses": [
+        {
+          "uuid": "ae22568a-ffe8-4aa1-9335-a3b50a2fe0cf",
+          "body": "{\n  \"id\": {{ urlParam 'id' }},\n  \"name\": \"Java les bases\",\n  \"courses\": [\n    {\n      \"id\": 1,\n      \"name\": \"Classes et attributs\",\n      \"totalHourCount\": {{ faker 'datatype.number' 12}},\n      \"progression\": {{ faker 'datatype.number' 100}},\n      \"referee\": \"{{ faker 'name.firstName' }} {{ faker 'name.lastName' }}\",\n      \"fileName\": \"java_classes_and_attributes\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "0c04f8fd-b6d4-45d6-8db8-7bc71525fe27",
+      "documentation": "",
+      "method": "delete",
+      "endpoint": "modules/:module_id",
+      "responses": [
+        {
+          "uuid": "c2e4690f-a5f7-42ea-b481-0950a495f232",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "a823366a-ca03-4a4f-824f-629935eda56e",
+          "body": "{\n  \"timestamp\": 1420467113764,\n  \"status\": 401,\n  \"error\": \"Unauthorized\",\n  \"message\": \"Missing authentication method to access this resource\",\n  \"path\": \"/modules/id\"\n}",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null,
+      "type": "http"
     }
   ],
   "rootChildren": [
