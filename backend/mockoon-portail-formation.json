@@ -45,6 +45,10 @@
         {
           "type": "route",
           "uuid": "c8c990b0-97ff-4d1a-9eec-a162cdece9a0"
+        },
+        {
+          "type": "route",
+          "uuid": "09ae6c94-d31d-4c6c-bc26-6b8f07c690f4"
         }
       ]
     }
@@ -58,7 +62,7 @@
       "responses": [
         {
           "uuid": "8d83991c-7045-47d6-bdfe-90257852a467",
-          "body": "{\r\n    \"content\": [\r\n        {\r\n            \"id\": 1,\r\n            \"name\": \"Java basics\",\r\n            \"courses\": [\r\n                {\r\n                    \"id\": 1,\r\n                    \"name\": \"Classes et attributs\",\r\n                    \"totalHourCount\": {{ faker 'datatype.number' 12}},\r\n                    \"progression\": {{ faker 'datatype.number' 100}},\r\n                    \"referee\": \"{{ faker 'name.firstName' + faker 'name.lastName' }}\",\r\n                    \"fileName\": \"java_classes_and _attributes\"\r\n                }\r\n            ]\r\n        }\r\n    ],\r\n    \"pageable\": {\r\n        \"sort\": {\r\n            \"empty\": false,\r\n            \"unsorted\": false,\r\n            \"sorted\": true\r\n        },\r\n        \"offset\": 0,\r\n        \"pageNumber\": 0,\r\n        \"pageSize\": 10,\r\n        \"paged\": true,\r\n        \"unpaged\": false\r\n    },\r\n    \"totalPages\": 1,\r\n    \"totalElements\": 1,\r\n    \"last\": true,\r\n    \"size\": 10,\r\n    \"number\": 0,\r\n    \"sort\": {\r\n        \"empty\": false,\r\n        \"unsorted\": false,\r\n        \"sorted\": true\r\n    },\r\n    \"numberOfElements\": 1,\r\n    \"first\": true,\r\n    \"empty\": false\r\n}",
+          "body": "{\r\n    \"content\": [\r\n        {\r\n            \"id\": 1,\r\n            \"name\": \"Java - les bases\",\r\n            \"courses\": [\r\n                {\r\n                    \"id\": 1,\r\n                    \"name\": \"Classes et attributs\",\r\n                    \"totalHourCount\": {{ faker 'datatype.number' 12}},\r\n                    \"progression\": {{ faker 'datatype.number' 100}},\r\n                    \"referee\": \"{{ faker 'name.firstName' }} {{ faker 'name.lastName' }}\",\r\n                    \"fileName\": \"java_classes_and_attributes\"\r\n                }\r\n            ]\r\n        },\r\n        {\r\n            \"id\": 2,\r\n            \"name\": \"Java Avancé\",\r\n            \"courses\": [\r\n                {\r\n                    \"id\": 2,\r\n                    \"name\": \"API Stream\",\r\n                    \"totalHourCount\": {{ faker 'datatype.number' 12}},\r\n                    \"progression\": {{ faker 'datatype.number' 100}},\r\n                    \"referee\": \"{{ faker 'name.firstName' }} {{ faker 'name.lastName' }}\",\r\n                    \"fileName\": \"stream_api\"\r\n                }\r\n            ]\r\n        }\r\n    ],\r\n    \"pageable\": {\r\n        \"sort\": {\r\n            \"empty\": false,\r\n            \"unsorted\": false,\r\n            \"sorted\": true\r\n        },\r\n        \"offset\": 0,\r\n        \"pageNumber\": 0,\r\n        \"pageSize\": 10,\r\n        \"paged\": true,\r\n        \"unpaged\": false\r\n    },\r\n    \"totalPages\": 1,\r\n    \"totalElements\": 1,\r\n    \"last\": true,\r\n    \"size\": 10,\r\n    \"number\": 0,\r\n    \"sort\": {\r\n        \"empty\": false,\r\n        \"unsorted\": false,\r\n        \"sorted\": true\r\n    },\r\n    \"numberOfElements\": 1,\r\n    \"first\": true,\r\n    \"empty\": false\r\n}",
           "latency": 0,
           "statusCode": 200,
           "label": "",
@@ -72,6 +76,31 @@
           "disableTemplating": false,
           "fallbackTo404": false,
           "default": true
+        },
+        {
+          "uuid": "8567010d-2d8d-4f4f-b4cd-749ad653c2be",
+          "body": "{\n  \"timestamp\": 1420467113764,\n  \"status\": 401,\n  \"error\": \"Unauthorized\",\n  \"message\": \"Missing authentication method to access this resource\",\n  \"path\": \"/modules\"\n}",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "header",
+              "modifier": "Authorization",
+              "value": "",
+              "invert": false,
+              "operator": "null"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
         }
       ],
       "enabled": true,
@@ -86,7 +115,7 @@
       "responses": [
         {
           "uuid": "ff046335-c73c-44ab-afc3-557cf738d90c",
-          "body": "{\n  \"id\": {{ urlParam 'module_id' }},\n  \"name\": \"Java basics\",\n  \"courses\": [\n    {\n      \"id\": 1,\n      \"name\": \"Classes et attributs\",\n      \"totalHourCount\": {{ faker 'datatype.number' 12}},\n      \"progression\": {{ faker 'datatype.number' 100}},\n      \"referee\": \"{{ faker 'name.firstName' }} {{ faker 'name.lastName' }}\",\n      \"fileName\": \"java_classes_and _attributes\"\n    }\n  ]\n}",
+          "body": "{\n  \"id\": {{ urlParam 'module_id' }},\n  \"name\": \"Java les bases\",\n  \"courses\": [\n    {\n      \"id\": 1,\n      \"name\": \"Classes et attributs\",\n      \"totalHourCount\": {{ faker 'datatype.number' 12}},\n      \"progression\": {{ faker 'datatype.number' 100}},\n      \"referee\": \"{{ faker 'name.firstName' }} {{ faker 'name.lastName' }}\",\n      \"fileName\": \"java_classes_and_attributes\"\n    }\n  ]\n}",
           "latency": 0,
           "statusCode": 200,
           "label": "",
@@ -100,6 +129,23 @@
           "disableTemplating": false,
           "fallbackTo404": false,
           "default": true
+        },
+        {
+          "uuid": "336210b8-3086-4794-98ce-563eaaa5c38e",
+          "body": "{\n  \"timestamp\": 1420467113764,\n  \"status\": 401,\n  \"error\": \"Unauthorized\",\n  \"message\": \"Missing authentication method to access this resource\",\n  \"path\": \"/modules/id\"\n}",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
         }
       ],
       "enabled": true,
@@ -114,7 +160,7 @@
       "responses": [
         {
           "uuid": "51dc94e6-f142-4c8d-bf59-94551e338d45",
-          "body": "[\n  {\n    \"id\": 1,\n    \"title\": \"\",\n    \"start\": \"2023-03-20T08:00:00+00:00\",\n    \"end\": \"2023-03-20T12:00:00+00:00\",\n    \"allDay\": false,\n    \"courseId\": 1\n  },\n  {\n    \"id\": 2,\n    \"title\": \"\",\n    \"start\": \"2023-02-24T13:00:00+00:00\",\n    \"end\": \"2023-02-24T17:00:00+00:00\",\n    \"allDay\": false,\n    \"courseId\": 1\n  }\n]",
+          "body": "[\n  {\n    \"id\": 1,\n    \"title\": \"Java\",\n    \"start\": \"2023-03-20T08:00:00+00:00\",\n    \"end\": \"2023-03-20T12:00:00+00:00\",\n    \"allDay\": false, \n    \"courseId\": 1\n  },\n  {\n    \"id\": 2,\n    \"title\": \"Java\",\n    \"start\": \"2023-02-24T13:00:00+00:00\",\n    \"end\": \"2023-02-24T17:00:00+00:00\",\n    \"allDay\": false,\n    \"courseId\": 1\n  }\n]",
           "latency": 0,
           "statusCode": 200,
           "label": "",
@@ -170,7 +216,7 @@
       "responses": [
         {
           "uuid": "93036bb3-85ad-4c20-b8e4-769a76502c3b",
-          "body": "{}",
+          "body": "[\n  {{#repeat 5}}\n  {\n    \"id\": \"{{ faker 'datatype.uuid' }}\",\n    \"username\": \"{{ faker 'name.firstName' }}_{{ faker 'name.lastName' }}\",\n    \"firstName\": \"{{ faker 'name.firstName' }}\",\n    \"lastName\": \"{{ faker 'name.lastName' }}\",\n    \"email\": \"{{ faker 'internet.email' }}\"\n  },\n  {{/repeat}}\n]",
           "latency": 0,
           "statusCode": 200,
           "label": "",
@@ -184,6 +230,31 @@
           "disableTemplating": false,
           "fallbackTo404": false,
           "default": true
+        },
+        {
+          "uuid": "5943df66-fe26-44a0-9167-b8c3ece89c30",
+          "body": "{\n  \"timestamp\": 1420467113764,\n  \"status\": 401,\n  \"error\": \"Unauthorized\",\n  \"message\": \"Missing authentication method to access this resource\",\n  \"path\": \"/users\"\n}",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "header",
+              "modifier": "Authorization",
+              "value": "",
+              "invert": false,
+              "operator": "null"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
         }
       ],
       "enabled": true,
@@ -228,6 +299,34 @@
         {
           "uuid": "5049d706-e1e7-489e-ac43-5889408bd2a1",
           "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "09ae6c94-d31d-4c6c-bc26-6b8f07c690f4",
+      "type": "http",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "users/:id",
+      "responses": [
+        {
+          "uuid": "ba39b435-1f40-4b1e-bdf9-f0c842123cb8",
+          "body": "{\n  \"id\": \"{{ urlParam 'id' }}\",\n  \"username\": \"{{ faker 'name.firstName' }}_{{ faker 'name.lastName' }}\",\n  \"firstName\": \"{{ faker 'name.firstName' }}\",\n  \"lastName\": \"{{ faker 'name.lastName' }}\",\n  \"email\": \"{{ faker 'internet.email' }}\"\n}",
           "latency": 0,
           "statusCode": 200,
           "label": "",
@@ -300,5 +399,13 @@
       "value": ""
     }
   ],
-  "data": []
+  "data": [
+    {
+      "uuid": "a4adbefb-38d3-47df-becd-e7fee5de93a7",
+      "id": "czg0",
+      "name": "New data",
+      "documentation": "",
+      "value": "{\r\n  \"uuid\": \"{{faker 'datatype.uuid'}}\",\r\n  \"firstName\": \"{{faker 'name.firstName'}}\",\r\n  \"lastName\": \"{{faker 'name.lastName'}}\"\r\n}"
+    }
+  ]
 }
