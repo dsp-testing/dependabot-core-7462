@@ -498,6 +498,10 @@
     {
       "key": "Content-Type",
       "value": "application/json"
+    },
+    {
+      "key": "Access-Control-Allow-Origin",
+      "value": "http://localhost:8100"
     }
   ],
   "proxyReqHeaders": [
