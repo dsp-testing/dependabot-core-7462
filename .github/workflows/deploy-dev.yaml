@@ -1,0 +1,21 @@
+# file: .github/workflows/deploy-dev.yaml
+on:
+  workflow-dispatch:
+
+jobs:
+  deploy-dev:
+    runs-on: ubuntu-latest
+    environment: test
+    steps:
+    - name: Context
+      uses: okteto/context@latest
+      with:
+        url: ${{secrets.OKTETO_URL}}
+        token: ${{ env.CLUSTER_TOKEN }}
+
+    - uses: okteto/namespace@latest
+    
+    - name: "Create stack"
+      uses: okteto/deploy-stack@latest
+      with:
+        build: "false"
