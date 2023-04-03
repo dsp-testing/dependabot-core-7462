@@ -9,11 +9,14 @@ jobs:
     steps:
     - uses: okteto/context@latest
       with:
-        token: ${{ secrets.OKTETO_TOKEN }}
+        token: ${{ env.CLUSTER_TOKEN }}
 
-    - uses: okteto/namespace@latest
-    
-    - name: "Create stack"
-      uses: okteto/deploy-stack@latest
+    - name: "Activate Namespace"
+      uses: okteto/namespace@latest
       with:
-        build: "false"
+        name: nerevahr
+    
+    - name: "Trigger the pipeline"
+      uses: okteto/pipeline@latest
+      with:
+        name: portail-formation-demo
