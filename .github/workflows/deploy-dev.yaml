@@ -1,18 +1,1 @@
-# file: .github/workflows/deploy-dev.yaml
-on:
-  workflow_dispatch:
 
-jobs:
-  deploy-dev:
-    runs-on: ubuntu-latest
-    environment: test
-    steps:
-    - uses: okteto/context@latest
-      with:
-        token: ${{ secrets.OKTETO_TOKEN }}
-    
-    - name: "Trigger the pipeline"
-      uses: okteto/pipeline@latest
-      with:
-        namespace: nerevahr
-        name: portail-formation-demo
