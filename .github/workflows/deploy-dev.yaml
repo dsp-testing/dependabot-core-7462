@@ -1,6 +1,6 @@
 # file: .github/workflows/deploy-dev.yaml
 on:
-  workflow-dispatch:
+  workflow_dispatch:
 
 jobs:
   deploy-dev:
