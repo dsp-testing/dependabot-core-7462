@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - main
+    paths:
+      - 'backend/**'
+      - 'openapi3.json'
   release:
     types: [created]
 
