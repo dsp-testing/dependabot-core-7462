@@ -10,13 +10,9 @@ jobs:
     - uses: okteto/context@latest
       with:
         token: ${{ secrets.OKTETO_TOKEN }}
-
-    - name: "Activate Namespace"
-      uses: okteto/namespace@latest
-      with:
-        name: nerevahr
     
     - name: "Trigger the pipeline"
       uses: okteto/pipeline@latest
       with:
+        namespace: nerevahr
         name: portail-formation-demo
