@@ -9,7 +9,7 @@ jobs:
     steps:
     - uses: okteto/context@latest
       with:
-        token: ${{ env.CLUSTER_TOKEN }}
+        token: ${{ secrets.OKTETO_TOKEN }}
 
     - name: "Activate Namespace"
       uses: okteto/namespace@latest
