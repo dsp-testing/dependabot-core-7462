@@ -7,10 +7,8 @@ jobs:
     runs-on: ubuntu-latest
     environment: test
     steps:
-    - name: Context
-      uses: okteto/context@latest
+    - uses: okteto/context@latest
       with:
-        url: ${{secrets.OKTETO_URL}}
         token: ${{ env.CLUSTER_TOKEN }}
 
     - uses: okteto/namespace@latest
