@@ -10,6 +10,10 @@ image:
   # Overrides the image tag whose default is the chart appVersion.
   tag: "latest"
 
+extraArgs: 
+  - "--data"
+  - "https://raw.githubusercontent.com/Nerevahr/portail-formation-demo/main/backend/mockoon-portail-formation.json"
+  
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
