@@ -37,6 +37,12 @@ spec:
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          {{- if .Values.extraArgs }}
+          args:
+            {{- range .Values.extraArgs }}
+            - {{ . }}
+            {{- end }}
+          {{- end }}
           {{- with .Values.serverEnvs }}
           env:
             {{- toYaml . | nindent 12 }}
