@@ -1,4 +1,4 @@
 deploy:
   - helm repo add bitnami https://charts.bitnami.com/bitnami
   - helm dependency build helm/portail-formation-backend 
-  - helm upgrade --install portail-formation --values helm/portail-formation-backend/values-okteto.yaml helm/portail-formation-backend
+  - helm upgrade --install portail-formation --values helm/portail-formation-backend/values-okteto-mock.yaml helm/portail-formation-backend
