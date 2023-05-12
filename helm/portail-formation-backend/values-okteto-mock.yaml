@@ -86,9 +86,6 @@ tolerations: []
 
 affinity: {}
 
-serverEnvs: 
-
-
 postgresql:
   enabled: false
 
