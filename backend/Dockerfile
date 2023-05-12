@@ -18,7 +18,7 @@ COPY backend/mockoon-portail-formation.json ./mockoon-portail-formation.json
 # USER mockoon
 ENV DATA=./mockoon-portail-formation.json
 EXPOSE 8080
-ENTRYPOINT ["mockoon-cli", "start", "--hostname", "0.0.0.0", "--daemon-off", "--data", "$DATA", "--container"]
+ENTRYPOINT ["mockoon-cli", "start", "--hostname", "0.0.0.0", "--daemon-off", "--data", $DATA, "--container"]
 # Usage: docker run -p <host_port>:<container_port> mockoon-test
 
 FROM openjdk:17-alpine as dev-mode
