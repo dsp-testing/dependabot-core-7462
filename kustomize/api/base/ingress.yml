@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: portail-formation
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - portail-formation.school-by-hiit.fr
+      secretName: portail-formation-cert
+  rules:
+    - host: portail-formation.school-by-hiit.fr
+      http:
+        paths:
+          - path: /api
+            pathType: Prefix
+            backend:
+              service:
+                name: portail-formation
+                port:
+                  name: https

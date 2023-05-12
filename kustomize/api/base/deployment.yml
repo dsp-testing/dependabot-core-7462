@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: portail-formation
+spec:
+  selector:
+    matchLabels:
+      app: portail-formation
+  replicas: 1
+  revisionHistoryLimit: 0
+  template:
+    metadata:
+      labels:
+        app: portail-formation
+    spec:
+      containers:
+        - name: portail-formation
+          image: ghcr.io/nerevahr/portail-formation-api-mock
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 8080
+          livenessProbe:
+            httpGet:
+              port: http
+              path: /api/actuator/health/liveness
+            initialDelaySeconds: 60
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              port: http
+              path: /api/actuator/health/readiness
+            initialDelaySeconds: 60
+            failureThreshold: 3
+          resources:
+            requests:
+              cpu: 50m
+              memory: 100Mi
+            limits:
+              cpu: 100m
+              memory: 200Mi
