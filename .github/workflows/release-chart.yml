@@ -28,6 +28,10 @@ jobs:
         run: |
           echo ${{ secrets.GITHUB_TOKEN }} | helm registry login ${{ env.GCR_IMAGE }} --username ${{ github.repository_owner }} --password-stdin
 
+      - name: add deps repo
+        run: |
+          helm repo add bitnami https://charts.bitnami.com/bitnami
+
       - name: download deps
         run: |
           helm dependency update ${{ github.workspace }}/helm/portail-formation-backend/
