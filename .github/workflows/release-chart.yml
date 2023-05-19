@@ -38,6 +38,7 @@ jobs:
 
       - name: save helm chart to local registry
         run: |
+          helm init -c
           helm package ${{ github.workspace }}/helm/portail-formation-backend/ ${{ env.GCR_IMAGE }}:${{ github.sha }}
 
       - name: publish chart to acr
