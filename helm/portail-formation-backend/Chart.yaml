@@ -1,5 +1,5 @@
 apiVersion: v2
-name: portail-formation-api
+name: portail-formation-demo
 description: A Helm chart for Kubernetes
 icon: https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png
 
