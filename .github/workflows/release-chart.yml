@@ -44,4 +44,4 @@ jobs:
 
       - name: publish chart to acr
         run: |
-          helm push $CHART_NAME-$IMAGE_TAG.tgz ghcr.io/${{ github.repository_owner }}/portail-formation-demo
+          helm push $CHART_NAME-$IMAGE_TAG.tgz oci://ghcr.io/nerevahr
