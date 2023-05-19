@@ -8,6 +8,8 @@ env:
   HELM_EXPERIMENTAL_OCI: 1 #enable OCI support
   HELM_VERSION_TO_INSTALL: 3.10.1 # version of HELM to install
   GCR_IMAGE: ghcr.io/${{ github.repository_owner }}/portail-formation-demo
+  CHART_NAME: portail-formation-api
+  IMAGE_TAG: 0.1.0
 
 jobs:
   build-chart:
@@ -24,23 +26,22 @@ jobs:
           # Version of helm
           version: ${{ env.HELM_VERSION_TO_INSTALL }} # default is latest
       
+      - name: helm lint
+        run: |
+          helm lint ${{ github.workspace }}/helm/portail-formation-backend/
+
       - name: login to acr using helm
         run: |
-          echo ${{ secrets.GITHUB_TOKEN }} | helm registry login ${{ env.GCR_IMAGE }} --username ${{ github.repository_owner }} --password-stdin
+          echo ${{ secrets.GITHUB_TOKEN }} | helm registry login ghcr.io --username ${{ github.repository_owner }} --password-stdin
 
       - name: add deps repo
         run: |
           helm repo add bitnami https://charts.bitnami.com/bitnami
 
-      - name: download deps
-        run: |
-          helm dependency update ${{ github.workspace }}/helm/portail-formation-backend/
-
       - name: save helm chart to local registry
         run: |
-          helm init -c
-          helm package ${{ github.workspace }}/helm/portail-formation-backend/ ${{ env.GCR_IMAGE }}:${{ github.sha }}
+          helm package --dependency-update ${{ github.workspace }}/helm/portail-formation-backend/ --version $IMAGE_TAG
 
       - name: publish chart to acr
         run: |
-          helm push ${{ env.GCR_IMAGE }}:${{ github.sha }}
+          helm push $CHART_NAME-$IMAGE_TAG.tgz oci://ghcr.io/${{ github.repository_owner }}
