@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - main
+    paths:
+      - 'helm/**'
 env:
   HELM_EXPERIMENTAL_OCI: 1 #enable OCI support
   HELM_VERSION_TO_INSTALL: 3.10.1 # version of HELM to install
@@ -15,7 +17,6 @@ jobs:
   build-chart:
     name: publish gcr
     runs-on: ubuntu-latest
-    environment: prod
     steps:
       - uses: actions/checkout@v2
         name: checkout repo
@@ -30,7 +31,7 @@ jobs:
         run: |
           helm lint ${{ github.workspace }}/helm/portail-formation-backend/
 
-      - name: login to acr using helm
+      - name: login to gcr using helm
         run: |
           echo ${{ secrets.GITHUB_TOKEN }} | helm registry login ghcr.io --username ${{ github.repository_owner }} --password-stdin
 
