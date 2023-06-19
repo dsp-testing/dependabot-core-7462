@@ -9,7 +9,7 @@ on:
 
 jobs:
   build-and-push-mock:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, Linux]
     steps:
       - uses: actions/checkout@v3
       
