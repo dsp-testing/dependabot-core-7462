@@ -1,0 +1,175 @@
+# Default values for portail-formation-api.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+image:
+  repository: ghcr.io/nerevahr/portail-formation-api-mock
+  pullPolicy: Always
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: "latest"
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+
+podAnnotations: {}
+
+podSecurityContext: {}
+  # fsGroup: 2000
+
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+service:
+  type: ClusterIP
+  port: 80
+
+ingress:
+  enabled: true
+  className: "nginx"
+  annotations: 
+    # kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
+  hosts:
+    - host: portail-formation.school-by-hiit.fr
+      paths:
+        - path: /api
+          pathType: Prefix
+  tls: []
+  #  - secretName: chart-example-tls
+  #    hosts:
+  #      - chart-example.local
+
+resources: 
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
+  limits:
+    cpu: '100m'
+    memory: 200Mi
+  requests:
+    cpu: 50m
+    memory: 100Mi
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+# serverEnvs: 
+#   - name: DATABASE_URL
+#     value: "portail-formation-postgresql:5432"
+#   - name: DATABASE_NAME
+#     value: my_db
+#   - name: DATABASE_USER
+#     value: portail-formation
+#   - name: DATABASE_PASSWORD
+#     valueFrom:
+#       secretKeyRef:
+#         name: portail-formation-postgresql
+#         key: password
+#   - name: S3_URL
+#     value: "http://portail-formation-minio:9000"
+#   - name: S3_BUCKET_NAME
+#     value: "springboot-test"
+#   - name: S3_ACCESS_KEY
+#     valueFrom:
+#       secretKeyRef:
+#         name: portail-formation-minio
+#         key: root-user
+#   - name: S3_SECRET_KEY
+#     valueFrom:
+#       secretKeyRef:
+#         name: portail-formation-minio
+#         key: root-password
+
+postgresql:
+  enabled: false
+  auth:
+    username: portail-formation
+    database: my_db
+    existingSecret: portail-formation-postgresql
+    secretKeys:
+      adminPasswordKey: postgres-password
+      userPasswordKey: password
+  primary:
+    persistence:
+      enabled: false
+    initdb:
+      user: postgres
+      password: Ch@nge1t
+      scripts:
+        my_init_script.sql: |
+          CREATE USER bn_keycloak WITH PASSWORD 'jw8s0F4';
+          CREATE DATABASE bitnami_keycloak;
+          RANT ALL PRIVILEGES ON DATABASE bitnami_keycloak TO bn_keycloak;
+
+minio:
+  enabled: false
+  persistence:
+    enabled: false
+  auth:
+    rootUser: admin
+    rootPassword: Ch@nge1t
+  provisioning:
+    enabled: true
+    users:
+      - username: minio-client
+        password: Ch@nge1t
+        disabled: false
+        policies:
+          - readwrite
+        setPolicies: true
+    buckets:
+      - name: springboot-test
+  
+keycloak: 
+  enabled: false
+  ingress:
+    enabled: false
+
+  auth:
+    adminUser: admin
+    adminPassword: admin
+  postgresql:
+    enabled: false
+
+  externalDatabase:
+    host: "portail-formation-postgresql"
+    port: 5432
+    user: bn_keycloak
+    database: bitnami_keycloak
+    password: "jw8s0F4"
+    # existingSecret: "portail-formation-postgresql"
+    # existingSecretPasswordKey: "password"
