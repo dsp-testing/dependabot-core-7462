@@ -22,7 +22,7 @@ jobs:
         name: checkout repo
       
       - name: install helm
-        uses: Azure/setup-helm@v1
+        uses: Azure/setup-helm@v3
         with:
           # Version of helm
           version: ${{ env.HELM_VERSION_TO_INSTALL }} # default is latest
