@@ -21,7 +21,7 @@
 
         <!-- Dependencies versions -->
         <springdoc-openapi-ui.version>1.8.0</springdoc-openapi-ui.version>
-        <mapstruct.version>1.6.0</mapstruct.version>
+        <mapstruct.version>1.6.1</mapstruct.version>
         <minio.version>8.5.12</minio.version>
         <hibernate-validator.version>8.0.0.Final</hibernate-validator.version>
         <common-io.version>2.16.1</common-io.version>
